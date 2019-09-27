@@ -1,4 +1,4 @@
-package cc.linkedme.linkcontent;
+package cc.linkedme.linkcontent.linkcontentutils;
 
 import android.Manifest;
 import android.content.Context;
@@ -9,7 +9,7 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.telephony.TelephonyManager;
 
-public class Utils {
+public class LMContentUtils {
 
     //没有网络连接
     public static final int NETWORN_NONE = -1;
@@ -91,7 +91,7 @@ public class Utils {
         return NETWORN_NONE;
     }
 
-    public static boolean getWifiConnected(Context mContext) {
+    private static boolean getWifiConnected(Context mContext) {
         try {
             if (PackageManager.PERMISSION_GRANTED == mContext.checkCallingOrSelfPermission(Manifest.permission.ACCESS_NETWORK_STATE)) {
                 ConnectivityManager connManager = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);

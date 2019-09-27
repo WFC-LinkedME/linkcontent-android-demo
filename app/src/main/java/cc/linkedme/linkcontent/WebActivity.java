@@ -19,7 +19,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import cc.linkedme.linkcontent.linkcontentutils.LMContentUtils;
 import cc.linkedme.linkcontent.linkcontentutils.LMWebChromeClient;
+import cc.linkedme.linkcontent.linkcontentutils.LMWebViewClient;
 import cc.linkedme.linkcontent.linkcontentutils.OnLoadUrlListener;
 import cc.linkedme.linkcontent.linkcontentutils.OnReceivedTitleListener;
 
@@ -52,12 +54,12 @@ public class WebActivity extends AppCompatActivity implements OnLoadUrlListener,
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             WebView.setWebContentsDebuggingEnabled(true);
         }
-        imei = Utils.getDeviceId(this);
+        imei = LMContentUtils.getDeviceId(this);
         String loadUrl = "http://content.linkedme.cc/feed/index.html?app_key=7e289a2484f4368dbafbd1e5c7d06903&device_type=1";
         if (!TextUtils.isEmpty(imei)) {
             loadUrl += "&device_id=" + imei;
         }
-        loadUrl += "&nt=" + Utils.getNetworkState(this);
+        loadUrl += "&nt=" + LMContentUtils.getNetworkState(this);
         addWebView(loadUrl, false);
 
     }
