@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="primaryText">#212121</color>
+    <color name="secondaryText">#757575</color>
+    <color name="icons">#212121</color>
+    <color name="divider">#BDBDBD</color>
+    <color name="toolbarColor">#ffffff</color>
+    <color name="split_color">#ddd</color>
+
+    <color name="cnpc_red">#C50818</color>
+    <color name="cnpc_yellow_dark">#F09224</color>
+    <color name="cnpc_yellow_light">#FCCE2F</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="videoMask">#DD000000</color>
+    <color name="videoTransparent">#00000000</color>
+    <color name="background">#21000000</color>
+    <color name="foreground">#eeffffff</color>
+    <color name="textHide">#21000000</color>
+    <color name="number_bright">#BDBDBD</color>
+    <color name="number_dark">#795548</color>
+
+    <color name="refresh_one">#1976D2</color>
+    <color name="refresh_two">#C50818</color>
+    <color name="refresh_three">#757575</color>
+
+</resources>
