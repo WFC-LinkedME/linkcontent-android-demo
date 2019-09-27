@@ -27,7 +27,7 @@ import cc.linkedme.linkcontent.linkcontentutils.OnReceivedTitleListener;
 
 public class WebActivity extends AppCompatActivity implements OnLoadUrlListener, OnReceivedTitleListener {
 
-    private static final String TAG = "linkcontent-webactivity";
+    private static final String TAG = "linkcontent";
     private ImageView back;
     private String imei;
     private ConstraintLayout toolbar;

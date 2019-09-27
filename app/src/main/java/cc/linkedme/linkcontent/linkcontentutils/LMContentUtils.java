@@ -12,16 +12,16 @@ import android.telephony.TelephonyManager;
 public class LMContentUtils {
 
     //没有网络连接
-    public static final int NETWORN_NONE = -1;
+    private static final int NETWORN_NONE = -1;
 
     //手机网络数据连接类型
     //未知蜂窝网络
-    public static final int NETWORN_MOBILE = 0;
+    private static final int NETWORN_MOBILE = 0;
     //wifi连接
-    public static final int NETWORN_WIFI = 1;
-    public static final int NETWORN_2G = 2;
-    public static final int NETWORN_3G = 3;
-    public static final int NETWORN_4G = 4;
+    private static final int NETWORN_WIFI = 1;
+    private static final int NETWORN_2G = 2;
+    private static final int NETWORN_3G = 3;
+    private static final int NETWORN_4G = 4;
 
     /**
      * 获取当前网络连接类型

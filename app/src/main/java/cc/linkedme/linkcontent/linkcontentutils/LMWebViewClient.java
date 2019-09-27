@@ -59,7 +59,7 @@ public class LMWebViewClient extends WebViewClient {
         Log.i(TAG, "onPageFinished: 页面加载完成");
         super.onPageFinished(view, url);
 
-        if (loadUrlInSelf && url.equals(view.getOriginalUrl())) {
+        if (url.equals(view.getOriginalUrl())) {
             Log.i(TAG, "onPageFinished: url =" + url + ", view.getOriginalUrl()=" + view.getOriginalUrl());
             injectLinkedMEADHelper(view);
         }
