@@ -74,7 +74,7 @@ public class LMWebViewClient extends WebViewClient {
         String today = simpleDateFormat.format(new Date());
         view.loadUrl("javascript:" +
                 "var linkedmeScript = document.createElement('script'); " +
-                "linkedmeScript.src='https://content.linkedme.cc/feed/content_sdk.js?random=" + today + "';" +
+                "linkedmeScript.src='" + LMConfig.INJECT_JS_URL + "?random=" + today + "';" +
                 "linkedmeScript.onload=function(){ initLinkContent('" + LMConfig.APP_KEY
                 + "','" + LMContentUtils.getDeviceId(context)
                 + "','" + "1"

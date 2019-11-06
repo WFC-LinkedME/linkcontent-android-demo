@@ -19,6 +19,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import cc.linkedme.linkcontent.linkcontentutils.LMConfig;
 import cc.linkedme.linkcontent.linkcontentutils.LMContentUtils;
 import cc.linkedme.linkcontent.linkcontentutils.LMWebChromeClient;
 import cc.linkedme.linkcontent.linkcontentutils.LMWebViewClient;
@@ -55,7 +56,8 @@ public class WebActivity extends AppCompatActivity implements OnLoadUrlListener,
             WebView.setWebContentsDebuggingEnabled(true);
         }
         imei = LMContentUtils.getDeviceId(this);
-        String loadUrl = "http://content.linkedme.cc/feed/index.html?app_key=7e289a2484f4368dbafbd1e5c7d06903&device_type=1";
+//        imei = "589024789214345";
+        String loadUrl = LMConfig.CONTENT_H5_URL + "?app_key=" + LMConfig.APP_KEY + "&device_type=1";
         if (!TextUtils.isEmpty(imei)) {
             loadUrl += "&device_id=" + imei;
         }
