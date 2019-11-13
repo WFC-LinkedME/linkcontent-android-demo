@@ -2,12 +2,14 @@ package cc.linkedme.linkcontent.linkcontentutils;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 
 public class LMContentUtils {
 
@@ -124,6 +126,17 @@ public class LMContentUtils {
 
         }
         return deviceId;
+    }
+
+    public static String getAppVersion(Context context) {
+        String appVersionName = "";
+        try {
+            PackageInfo packageInfo = context.getApplicationContext().getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            appVersionName = packageInfo.versionName;
+        } catch (PackageManager.NameNotFoundException ignore) {
+
+        }
+        return appVersionName;
     }
 
 }

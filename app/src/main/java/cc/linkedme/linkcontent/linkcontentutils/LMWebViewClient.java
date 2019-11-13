@@ -2,6 +2,7 @@ package cc.linkedme.linkcontent.linkcontentutils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.util.Log;
@@ -20,10 +21,13 @@ public class LMWebViewClient extends WebViewClient {
     private Context context;
     // 是否在已有的 webview 中加载链接，true: 在已有的 webview 中加载 false: 重新创建新的 webview 加载链接
     private boolean loadUrlInSelf;
+    private String oaid;
 
     public LMWebViewClient(Context context, boolean loadUrlInSelf) {
         this.context = context;
         this.loadUrlInSelf = loadUrlInSelf;
+        SharedPreferences sharedPreferences = context.getSharedPreferences("device_info", Context.MODE_PRIVATE);
+        oaid = sharedPreferences.getString("oaid", "");
     }
 
     @Override
@@ -75,14 +79,14 @@ public class LMWebViewClient extends WebViewClient {
         view.loadUrl("javascript:" +
                 "var linkedmeScript = document.createElement('script'); " +
                 "linkedmeScript.src='" + LMConfig.INJECT_JS_URL + "?random=" + today + "';" +
-                "linkedmeScript.onload=function(){ initLinkContent('" + LMConfig.APP_KEY
-                + "','" + LMContentUtils.getDeviceId(context)
-                + "','" + "1"
-                + "')};" +
-                "document.head.appendChild(linkedmeScript);");
+                "linkedmeScript.onload=function(){ initLinkContentParams({'app_key':'" + LMConfig.APP_KEY
+                + "','device_id':'" + LMContentUtils.getDeviceId(context)
+                + "','oaid':'" + oaid
+                + "','device_type':'1"
+                + "'})};"
+                + "document.head.appendChild(linkedmeScript);");
 
         Log.i(TAG, "injectLinkedMEADHelper:  注入js完成");
-
     }
 
     /**

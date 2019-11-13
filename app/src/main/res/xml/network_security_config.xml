@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
-    <base-config cleartextTrafficPermitted="true"/>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates
+                    src="system"
+                    overridePins="true"/>
+            <!--增加一行信任所有用户-->
+            <certificates
+                    src="user"
+                    overridePins="true"/>
+            <!--这行是增加信任某位用户-->
+        </trust-anchors>
+    </base-config>
 </network-security-config>

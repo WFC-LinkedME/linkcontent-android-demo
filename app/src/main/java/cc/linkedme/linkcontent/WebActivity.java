@@ -2,6 +2,7 @@ package cc.linkedme.linkcontent;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -62,6 +63,10 @@ public class WebActivity extends AppCompatActivity implements OnLoadUrlListener,
             loadUrl += "&device_id=" + imei;
         }
         loadUrl += "&nt=" + LMContentUtils.getNetworkState(this);
+        loadUrl += "&app_version=" + LMContentUtils.getAppVersion(this);
+        SharedPreferences sharedPreferences = getSharedPreferences("device_info", MODE_PRIVATE);
+        String oaid = sharedPreferences.getString("oaid", "");
+        loadUrl += "&oaid=" + oaid;
         addWebView(loadUrl, false);
 
     }
