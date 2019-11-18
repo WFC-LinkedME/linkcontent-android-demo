@@ -1,6 +1,9 @@
 package cc.linkedme.linkcontent.linkcontentutils;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
@@ -21,19 +24,19 @@ public class LMWebChromeClient extends WebChromeClient {
     }
 
     // 处理h5中alert提示
-//    @Override
-//    public boolean onJsAlert(WebView view, String url, String message, final JsResult result) {
-//        AlertDialog.Builder b = new AlertDialog.Builder(context);
-//        b.setTitle("Alert");
-//        b.setMessage(message);
-//        b.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                result.confirm();
-//            }
-//        });
-//        b.setCancelable(false);
-//        b.create().show();
-//        return true;
-//    }
+    @Override
+    public boolean onJsAlert(WebView view, String url, String message, final JsResult result) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Alert");
+        builder.setMessage(message);
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                result.confirm();
+            }
+        });
+        builder.setCancelable(false);
+        builder.create().show();
+        return true;
+    }
 }

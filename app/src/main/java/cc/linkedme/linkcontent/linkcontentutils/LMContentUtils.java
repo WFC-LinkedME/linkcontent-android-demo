@@ -2,6 +2,7 @@ package cc.linkedme.linkcontent.linkcontentutils;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
@@ -9,7 +10,9 @@ import android.net.Network;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.telephony.TelephonyManager;
-import android.util.Log;
+import android.text.TextUtils;
+
+import java.util.UUID;
 
 public class LMContentUtils {
 
@@ -137,6 +140,16 @@ public class LMContentUtils {
 
         }
         return appVersionName;
+    }
+
+    public static String getAuid(Context context) {
+        SharedPreferences sharedPreferences = context.getApplicationContext().getSharedPreferences("auid_info", Context.MODE_PRIVATE);
+        String auid = sharedPreferences.getString("auid", "");
+        if (TextUtils.isEmpty(auid)) {
+            auid = UUID.randomUUID().toString();
+            sharedPreferences.edit().putString("auid", auid).apply();
+        }
+        return auid;
     }
 
 }

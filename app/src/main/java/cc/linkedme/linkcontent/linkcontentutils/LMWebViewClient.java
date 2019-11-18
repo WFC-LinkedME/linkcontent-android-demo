@@ -23,7 +23,7 @@ public class LMWebViewClient extends WebViewClient {
     private boolean loadUrlInSelf;
     // oaid 如果没有获取到，则传空，不要传入固定数据
     private String oaid;
-    // auid 为你们的用户标识，此处只是随机生成一个uuid作为用户标识，并用作示例，在h5请求中的auid参数传入你们的用户标识
+    // auid 为用户标识，如果有自有用户标识，请使用自有用户标识，如若没有可调用工具类方法获取一个UUID来标识用户
     private String auid;
 
 
@@ -32,7 +32,7 @@ public class LMWebViewClient extends WebViewClient {
         this.loadUrlInSelf = loadUrlInSelf;
         SharedPreferences sharedPreferences = context.getSharedPreferences("device_info", Context.MODE_PRIVATE);
         oaid = sharedPreferences.getString("oaid", "");
-        auid = sharedPreferences.getString("auid", "");
+        auid = LMContentUtils.getAuid(context);
     }
 
     @Override

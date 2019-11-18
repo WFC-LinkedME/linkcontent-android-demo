@@ -20,8 +20,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.UUID;
-
 import cc.linkedme.linkcontent.linkcontentutils.LMConfig;
 import cc.linkedme.linkcontent.linkcontentutils.LMContentUtils;
 import cc.linkedme.linkcontent.linkcontentutils.LMWebChromeClient;
@@ -70,13 +68,8 @@ public class WebActivity extends AppCompatActivity implements OnLoadUrlListener,
         String oaid = sharedPreferences.getString("oaid", "");
         // oaid 如果没有获取到，则传空，不要传入固定数据
         loadUrl += "&oaid=" + oaid;
-        // auid 为你们的用户标识，此处只是随机生成一个uuid作为用户标识，并用作示例，在h5请求中的auid参数传入你们的用户标识
-        String auid = sharedPreferences.getString("auid", "");
-        if (TextUtils.isEmpty(auid)) {
-            auid = UUID.randomUUID().toString();
-            sharedPreferences.edit().putString("auid", auid).apply();
-        }
-        loadUrl += "&auid=" + auid;
+        // auid 为用户标识，如果有自有用户标识，请使用自有用户标识，如若没有可调用工具类方法获取一个UUID来标识用户
+        loadUrl += "&auid=" + LMContentUtils.getAuid(this);
         addWebView(loadUrl, false);
 
     }
