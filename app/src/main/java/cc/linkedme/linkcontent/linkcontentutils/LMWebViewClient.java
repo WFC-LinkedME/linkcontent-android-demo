@@ -21,13 +21,18 @@ public class LMWebViewClient extends WebViewClient {
     private Context context;
     // 是否在已有的 webview 中加载链接，true: 在已有的 webview 中加载 false: 重新创建新的 webview 加载链接
     private boolean loadUrlInSelf;
+    // oaid 如果没有获取到，则传空，不要传入固定数据
     private String oaid;
+    // auid 为你们的用户标识，此处只是随机生成一个uuid作为用户标识，并用作示例，在h5请求中的auid参数传入你们的用户标识
+    private String auid;
+
 
     public LMWebViewClient(Context context, boolean loadUrlInSelf) {
         this.context = context;
         this.loadUrlInSelf = loadUrlInSelf;
         SharedPreferences sharedPreferences = context.getSharedPreferences("device_info", Context.MODE_PRIVATE);
         oaid = sharedPreferences.getString("oaid", "");
+        auid = sharedPreferences.getString("auid", "");
     }
 
     @Override
@@ -82,6 +87,7 @@ public class LMWebViewClient extends WebViewClient {
                 "linkedmeScript.onload=function(){ initLinkContentParams({'app_key':'" + LMConfig.APP_KEY
                 + "','device_id':'" + LMContentUtils.getDeviceId(context)
                 + "','oaid':'" + oaid
+                + "','auid':'" + auid
                 + "','device_type':'1"
                 + "'})};"
                 + "document.head.appendChild(linkedmeScript);");
